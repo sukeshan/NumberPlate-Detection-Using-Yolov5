@@ -11,11 +11,10 @@ tim= datetime.datetime.now()
 # Below code is check the extracted number from number plate and open the excel and write vehicle number and current time in " ENTRY SHEET " and delete the image in storage
 
 def check_prev(result): # this function is used to check the detected number is new or previous
-    with open('/home/admin1/yolov5/check.txt' ,'r') as filer:prev = filer.read()
+    with open('/path/check.txt' ,'r') as filer:prev = filer.read() # change the path
     if result != prev:
         with open ('check.txt' ,'w') as filew:filew.write(result)
         return True
-    
     else: return False  
 
 def textextraction(input_file): # this function is used to extract the text
@@ -34,7 +33,6 @@ def textextraction(input_file): # this function is used to extract the text
     for item in response["Blocks"]:
         if item["BlockType"] == "LINE":
             text += item["Text"] + '\n'
-    #print(text)
     return text
 
 
@@ -44,7 +42,6 @@ def aws():
         print(image)
         with open(image,'rb')as doc: result = textextraction(doc.read())
         result = result.replace('*','').replace(' ','').replace('\n','')
-        print(result)
         
         if result[:2].isalpha() and result[2:4].isnumeric()==True:
             if result[4:6].isalpha() ==True:
@@ -55,8 +52,7 @@ def aws():
                         data = pd.read_excel('database.xlsx')
                         updated = data.append(pd.DataFrame([[result ,tim.strftime('%H:%M')]],columns= ['VEHICLE NUMBER' , 'ENTRY TIME']))
                         updated.to_excel('database.xlsx', index = False)
-                        #write_gsheet(result , tim.strftime('%H:%M') , excel_row)
-                        print('result=' ,result)
+                        #write_gsheet(result , tim.strftime('%H:%M') , excel_row) # if you want to write in google sheet uncomment this line and comment the above three lines
                         os.remove(image)
                         return None
                     
@@ -67,11 +63,10 @@ def aws():
             elif result[4:5].isalpha() and result[6:].isnumeric()== True:
                 check = check_prev(result)
                 if check :
-                    print('result=' ,result)
                     data = pd.read_excel('database.xlsx')
                     data = data.append(pd.DataFrame([[result ,tim.strftime('%H:%M')]],columns= ['VEHICLE NUMBER' , 'ENTRY TIME']))
                     data.to_excel('database.xlsx', index = False)
-                    #write_gsheet(result , tim.strftime('%H:%M') , excel_row )
+                    #write_gsheet(result , tim.strftime('%H:%M') , excel_row ) # if you want to write in google sheet uncomment this line and comment the above three lines
                     os.remove(image)
                     return None
                 
