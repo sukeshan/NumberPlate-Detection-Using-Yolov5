@@ -8,7 +8,7 @@ import pandas as pd
 
 tim= datetime.datetime.now()
 
-# Below code is check the extracted number from number plate and open the excel and write vehicle number and current time in " ENTRY SHEET " and delete the image in storage
+# Below code is check the extracted number from number plate and write number and time (time of detection) in excel
 
 def check_prev(result): # this function is used to check the detected number is new or previous
     with open('/path/check.txt' ,'r') as filer:prev = filer.read() # change the path
@@ -52,7 +52,8 @@ def aws():
                         data = pd.read_excel('database.xlsx')
                         updated = data.append(pd.DataFrame([[result ,tim.strftime('%H:%M')]],columns= ['VEHICLE NUMBER' , 'ENTRY TIME']))
                         updated.to_excel('database.xlsx', index = False)
-                        #write_gsheet(result , tim.strftime('%H:%M') , excel_row) # if you want to write in google sheet uncomment this line and comment the above three lines
+                        # if you want to write in google sheet uncomment the below line and comment the above three lines and also you should do some change in gsheet.py
+                        #write_gsheet(result , tim.strftime('%H:%M') , excel_row) 
                         os.remove(image)
                         return None
                     
@@ -66,7 +67,8 @@ def aws():
                     data = pd.read_excel('database.xlsx')
                     data = data.append(pd.DataFrame([[result ,tim.strftime('%H:%M')]],columns= ['VEHICLE NUMBER' , 'ENTRY TIME']))
                     data.to_excel('database.xlsx', index = False)
-                    #write_gsheet(result , tim.strftime('%H:%M') , excel_row ) # if you want to write in google sheet uncomment this line and comment the above three lines
+                    # if you want to write in google sheet uncomment the below line and comment the above three lines and also you should do some change in gsheet.py
+                    #write_gsheet(result , tim.strftime('%H:%M') , excel_row )
                     os.remove(image)
                     return None
                 
