@@ -1,9 +1,9 @@
 # NumberPlate-Detection-Using-Yolov5
 
 
-Dataset with annotation : https://drive.google.com/drive/folders/1sW_1-s0E8sX4ZBs8x_HGZkk12AJDnVop?usp=sharing
+Annotated Dataset : https://drive.google.com/drive/folders/1sW_1-s0E8sX4ZBs8x_HGZkk12AJDnVop?usp=sharing
 
-Pretrained weight :  https://drive.google.com/file/d/10R8BKgnfCAmylta9-iWSi_eiXFIo1JKW/view?usp=sharing
+Pretrained weight file :  https://drive.google.com/file/d/10R8BKgnfCAmylta9-iWSi_eiXFIo1JKW/view?usp=sharing
 
  **FLOW:**
    
