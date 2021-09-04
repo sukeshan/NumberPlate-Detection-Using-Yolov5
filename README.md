@@ -3,7 +3,7 @@
 
 Annotated Dataset : https://drive.google.com/drive/folders/1sW_1-s0E8sX4ZBs8x_HGZkk12AJDnVop?usp=sharing
 
-The Annotated Dataset contain 931 data points (Indian Car images)
+The Annotated Dataset contain 931 data points (Indian Car with variable image size)
 
 Pretrained weight file :  https://drive.google.com/file/d/10R8BKgnfCAmylta9-iWSi_eiXFIo1JKW/view?usp=sharing
 
