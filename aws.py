@@ -36,7 +36,7 @@ def textextraction(input_file): # this function is used to extract the text
     return text
 
 
-def aws():
+def textract():
     path = 'crop/'
     for image in glob.glob(path+'*.jpg'):
         print(image)
