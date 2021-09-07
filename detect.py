@@ -10,7 +10,7 @@ import argparse
 import sys
 import time
 from pathlib import Path
-from textract import aws # this function is used to extract the car vehicle number and store it on google sheet .if you don't want remove here and line  208 too
+from aws import textract # this function is used to extract the car vehicle number and store it on google sheet .if you don't want remove here and line  208 too
 
 import cv2
 import numpy as np
@@ -204,8 +204,8 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
                         if save_crop:
-                            save_one_box(xyxy, imc, file='/home/admin1/yolov5/crop/'+ f'{p.stem}.jpg', BGR=True)
-                            aws() #call aws extrction function
+                            save_one_box(xyxy, imc, file='/home/admin1/yolov5/crop/'+ f'{p.stem}.jpg', BGR=True)# you have to change the path 
+                            textract() #call textract extrction function
                             
             # Print time (inference + NMS)
             print(f'{s}Done. ({t2 - t1:.3f}s)')
