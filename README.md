@@ -1,6 +1,11 @@
 # NumberPlate Detection Using Yolo Version 5
 
 
+
+https://user-images.githubusercontent.com/48553042/143177283-f274dc3e-2f80-49f0-80d4-78707dca53dc.mp4
+
+
+
 Annotated Dataset : https://drive.google.com/drive/folders/1sW_1-s0E8sX4ZBs8x_HGZkk12AJDnVop?usp=sharing
 
 The Annotated Dataset contain 931 data points (Indian Car with variable image size)
